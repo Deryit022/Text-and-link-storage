@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0095ff;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .login-btn, #next-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #0095ff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .login-btn:hover, #next-btn:hover {
+            background-color: #0077cc;
+        }
+
+        #next-btn {
+            display: none; /* Awalnya disembunyikan */
+        }
+
+        .error {
+            color: red;
+            font-size: 1rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Mencegah form submit
+
+            // Mendapatkan nilai input
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Validasi login
+            if ((username === "Dery" && password === "Dery22") || 
+                (username === "helo" && password === "helo321") ||
+                (username === "wlc" && password === "wlc")) {
+                alert("Login berhasil!");
+                document.getElementById("error-message").textContent = ""; // Bersihkan pesan error
+
+                // Tampilkan tombol SELANJUTNYA
+                document.getElementById("next-btn").style.display = "block";
+            } else {
+                document.getElementById("error-message").textContent = "Username atau Password salah!";
+                document.getElementById("next-btn").style.display = "none"; // Sembunyikan tombol jika gagal
+            }
+        }
+
+        function goToNextPage() {
+            window.location.href = "index2.html"; // Ganti dengan URL halaman yang diinginkan
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>REGISTER ACCOUNT</h1>
+        <form onsubmit="validateLogin(event)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Contoh : agus" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Sandi : xxxx" required>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+            <div id="error-message" class="error"></div>
+        </form>
+
+        <!-- Tombol SELANJUTNYA yang akan muncul jika login berhasil -->
+        <button id="next-btn" onclick="goToNextPage()">SELANJUTNYA</button>
+    </div>
+</body>
+</html>
